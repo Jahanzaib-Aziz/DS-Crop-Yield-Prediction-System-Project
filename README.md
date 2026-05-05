@@ -128,17 +128,17 @@ The clamping operation max(0, min(pred, 100)) enforces the output to always fall
 Although the clamp allows values up to 100%, the realistic prediction ceiling is determined entirely by the training data. If the dataset Yield column contains no values above 60% after outlier clipping and normalization, then the model has never learned what conditions produce yields in the 60–100% range and will never predict there. The clamp exists as a safety net, not as a reachable upper bound in practice.
 5.3  Risk Classification Engine
 if pred < 33:
-    risk = "Low ⚠️"
+    risk = "Low "
 elif pred < 66:
-    risk = "Medium ⚖️"
+    risk = "Medium "
 else:
-    risk = "High ✅"
+    risk = "High "
 A fixed three-tier threshold system classifies every prediction into a risk category. These thresholds divide the 0–100% scale into equal thirds. An important limitation is that these cutoffs are hardcoded and do not adapt to the actual distribution of the training data. If the model only predicts between 20% and 60% due to data distribution constraints, the High category (above 66%) will almost never be reached and the Low category may dominate.
 
 Predicted Yield	Risk Level	Interpretation
-66% – 100%	High ✅	Optimal conditions, excellent expected yield
-33% – 65%	Medium ⚖️	Adequate conditions, moderate yield expected
-0% – 32%	Low ⚠️	Poor conditions, immediate intervention needed
+66% – 100%	High 	Optimal conditions, excellent expected yield
+33% – 65%	Medium 	Adequate conditions, moderate yield expected
+0% – 32%	Low 	Poor conditions, immediate intervention needed
 
 6. Monte Carlo Maximum Yield Optimizer
 6.1  Algorithm Overview
@@ -275,5 +275,3 @@ Matplotlib	Latest	Chart generation for PDF and UI
 ReportLab	Latest	Professional PDF report generation
 
 
-
-— End of Document —
